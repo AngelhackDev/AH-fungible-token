@@ -1,0 +1,7 @@
+packages:
+- ./splice-token-test-trading-app
+- ./splice-token-standard-test
+- ./splice-amulet-test
+- ./splice-amulet-name-service-test
+- ./splice-wallet-test
+- ./splice-dso-governance-test
