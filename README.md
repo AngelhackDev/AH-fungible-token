@@ -33,7 +33,7 @@ The code demonstrates both direct (single‑step) transfers and two‑step, pend
     - `setupToken`: shared test setup for parties, instrument and initial issuances
     - Tests for two‑step accept/reject/withdraw, expired single‑step, update‑failure, wrong admin, insufficient balance
 
-- [external-test-sources/splice-token-standard-test](/external-test-sources/splice-token-standard-test) — upstream testing utilities and examples
+- [external-test-sources/splice-token-standard-test](/external-test-sources/splice-token-standard-test) — upstream testing utilities and examples (git submodule)
 
 ## 3. Prerequisites
 
@@ -41,14 +41,22 @@ The code demonstrates both direct (single‑step) transfers and two‑step, pend
   - [fungible-token/daml.yaml](/fungible-token/daml.yaml)
   - [fungible-token-test/daml.yaml](/fungible-token-test/daml.yaml)
 - Canton or Sandbox for running scripts (tests use in‑memory test runner).
-- Git
+- Git with submodule support (`external-test-sources` are included as a git submodule).
 
 ## 4. Getting Started
 
-#### Clone the Repository
+### Clone with Submodules
+
+When cloning this repository, make sure to include the submodules:
 
 ```bash
-git clone https://github.com/AngelhackDev/AH-fungible-token.git
+git clone --recursive https://github.com/AngelhackDev/AH-fungible-token.git
+```
+
+If you've already cloned without submodules, initialize them:
+
+```bash
+git submodule update --init --recursive
 ```
 
 ## 5.  Build
@@ -56,7 +64,10 @@ git clone https://github.com/AngelhackDev/AH-fungible-token.git
 From the repository root (multi-package):
 
 ```bash
-# Build all packages
+# First, ensure submodules are initialized
+git submodule update --init --recursive
+
+# Then build all packages
 daml build --all
 ```
 
@@ -216,7 +227,18 @@ sequenceDiagram
 
 ## 11. External Test Sources
 
-The external test sources (`external-test-sources/`) are included as part of this repository. The DAR files and test scripts in DAML code are taken from the [Splice repository](https://github.com/hyperledger-labs/splice/tree/main/daml). These test utilities can be reused across multiple projects and are maintained alongside the main codebase.
+The external test sources ([external-test-sources](https://github.com/AngelhackDev/external-test-sources/)) are managed as a separate repository and included as a git submodule. This provides better dependency management and allows the test utilities to be reused across multiple projects.
+The DAR files and the DAML test scripts in this folder are taken from the [Splice repository](https://github.com/hyperledger-labs/splice/tree/main/daml).
+
+### Quick submodule commands
+
+```bash
+# Update external test sources to latest version
+git submodule update --remote external-test-sources
+
+# Initialize submodules (if not already done)
+git submodule update --init --recursive
+```
 
 ## License
 

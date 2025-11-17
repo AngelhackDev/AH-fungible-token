@@ -1,4 +1,29 @@
-.daml
-log
+# Build artifacts
+*.dar
+.daml/
+.daml-bazel-cache/
+
+# IDE and editor files
+.idea/
+.vscode/
+.specstory/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+log/
 /log
+
+# Generated code
 /fungible-token-js
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Internal development files
+.internal/
